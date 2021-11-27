@@ -7,19 +7,27 @@ import { AppComponent } from './app.component';
 import { TareasComponent } from './tareas.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 import { WebService } from './web.service';
+import { FormsModule } from '@angular/forms';
+import { NuevaTareaComponent } from './nueva-tarea.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TareasComponent
+    TareasComponent,
+    NuevaTareaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    HttpClientModule
+    MatInputModule,
+    MatButtonModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [WebService],
   bootstrap: [AppComponent]
