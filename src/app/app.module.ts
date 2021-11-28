@@ -9,15 +9,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { WebService } from './web.service';
 import { FormsModule } from '@angular/forms';
 import { NuevaTareaComponent } from './nueva-tarea.component';
+import { NavComponent } from './nav.component';
+import { HomeComponent } from './home.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TareasComponent,
-    NuevaTareaComponent
+    NuevaTareaComponent,
+    NavComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +33,8 @@ import { NuevaTareaComponent } from './nueva-tarea.component';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
+    MatToolbarModule,
     HttpClientModule,
     FormsModule
   ],
