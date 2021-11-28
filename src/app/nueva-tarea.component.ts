@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { WebService } from "./web.service";
 
 
@@ -25,7 +25,6 @@ import { WebService } from "./web.service";
 
 export class NuevaTareaComponent{
 
-    @Output() nuevaTarea = new EventEmitter();
 
     constructor(private webservice: WebService){}
 
@@ -33,7 +32,6 @@ export class NuevaTareaComponent{
 
     post(){
         this.webservice.postTask(this.tarea);
-        this.nuevaTarea.emit(this.tarea);
     }
     
 }

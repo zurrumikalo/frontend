@@ -1,4 +1,6 @@
 import { HttpClient} from '@angular/common/http';
+import { ThrowStmt } from '@angular/compiler';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 
 @Injectable() 
@@ -7,13 +9,21 @@ export class WebService{
 
     APIURL = 'http://localhost:7070/api';
 
-    constructor(private http: HttpClient){}
+    tareas: any;
+    respuesta: any;
 
-    getTask(){
-        return this.http.get(this.APIURL+'/tareas').toPromise();
+    constructor(private http: HttpClient){
+        this.tareas = [];
+        this.getTask();
     }
 
-    postTask(_tarea:any){
-        return this.http.post(this.APIURL+'/tarea',_tarea).toPromise();
+    async getTask(){
+        this.respuesta = await this.http.get(this.APIURL+'/tareas').toPromise();
+        this.tareas = this.respuesta;
+    }
+
+    async postTask(_tarea:any){
+        this.respuesta = await this.http.post(this.APIURL+'/tarea',_tarea).toPromise();
+        this.tareas.push(this.respuesta);
     }
 }

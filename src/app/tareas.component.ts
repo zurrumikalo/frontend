@@ -4,8 +4,8 @@ import { WebService } from "./web.service";
 
 @Component({
     selector: 'tareas',
-    template: `Listado tareas:
-               <mat-card *ngFor="let tarea of tareas">
+    template: `<h1>Listado tareas:</h1>
+               <mat-card *ngFor="let tarea of webservice.tareas">
                <mat-card-title>{{tarea.usuario}}</mat-card-title>
                <mat-card-content>
                 <p>{{tarea.trabajo}}</p>
@@ -15,14 +15,9 @@ import { WebService } from "./web.service";
 
 export class TareasComponent{
 
-    constructor(private webservice: WebService){}
+    constructor(public webservice: WebService){}
 
     tareas: any = [];
-
-    async ngOnInit(){
-        let respuesta = await this.webservice.getTask();
-        this.tareas = respuesta;
-    }
 
     
 }

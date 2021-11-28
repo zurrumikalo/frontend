@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { TareasComponent } from './tareas.component';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +7,5 @@ import { TareasComponent } from './tareas.component';
 })
 export class AppComponent {
 
-  @ViewChild(TareasComponent)
-  tareas!: TareasComponent;
 
-  nTarea(tarea:any){
-    this.tareas.tareas.push(tarea);
-
-  }
 }
