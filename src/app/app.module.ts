@@ -11,6 +11,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 import { WebService } from './web.service';
 import { FormsModule } from '@angular/forms';
 import { NuevaTareaComponent } from './nueva-tarea.component';
@@ -35,6 +37,8 @@ import { HomeComponent } from './home.component';
     MatButtonModule,
     MatSnackBarModule,
     MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
     HttpClientModule,
     FormsModule
   ],

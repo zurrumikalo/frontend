@@ -13,26 +13,27 @@ export class WebService{
 
     constructor(private http: HttpClient, private snack:MatSnackBar){
         this.tareas = [];
-        this.getTask();
+        this.getTask('');
     }
 
-    async getTask(){
-        try {
-            this.respuesta = await this.http.get(this.APIURL+'/tareas').toPromise();
-            this.tareas = this.respuesta;
-        } catch (error) {
+    getTask(username:string){
+        
+            username = (username) ? '/'+username:'';
+            this.http.get(this.APIURL+'/tareas'+username).subscribe(res =>{
+                this.tareas = res;
+            }, error => {
             this.manejaError('No se han podido cargar las tareas');
-        }
+            });
 
     }
 
-    async postTask(_tarea:any){
-        try {
-            this.respuesta = await this.http.post(this.APIURL+'/tarea',_tarea).toPromise();
-        this.tareas.push(this.respuesta);
-        } catch (error) {
-            this.manejaError('No se han podido añadir las tareas');
-        }
+    postTask(_tarea:any){
+         
+        this.http.post(this.APIURL+'/tarea',_tarea).subscribe(res =>{
+            this.tareas.push(this.respuesta);
+        }, error =>{
+        this.manejaError('No se han podido añadir las tareas');
+        });
         
     }
 

@@ -1,23 +1,23 @@
 import { Component, OnInit } from "@angular/core";
 import { WebService } from "./web.service";
+import { ActivatedRoute } from "@angular/router";
 
 
 @Component({
     selector: 'tareas',
-    template: `<h1>Listado tareas:</h1>
-               <mat-card *ngFor="let tarea of webservice.tareas">
-               <mat-card-title>{{tarea.usuario}}</mat-card-title>
-               <mat-card-content>
-                <p>{{tarea.trabajo}}</p>
-               </mat-card-content>
-               </mat-card> `
+    templateUrl: './tareas.component.html'
 })
 
 export class TareasComponent{
 
-    constructor(public webservice: WebService){}
+    username: string = '';
 
-    tareas: any = [];
+    constructor(public webservice: WebService, private rutaActiva: ActivatedRoute){}
+
+    ngOnInit():void{
+        this.username = this.rutaActiva.snapshot.params["username"];
+        this.webservice.getTask(this.username);
+    }
 
     
 }
