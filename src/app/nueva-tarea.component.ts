@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AuthService } from "./auth.service";
 import { WebService } from "./web.service";
 
 
@@ -8,11 +9,6 @@ import { WebService } from "./web.service";
                
                 <mat-card> 
                 <mat-card-title>Añadir tarea</mat-card-title>
-
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Nombre usuario:</mat-label>
-                    <input [(ngModel)]="tarea.usuario" matInput placeholder="Federico..." value="">
-                </mat-form-field>
 
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Tarea</mat-label>
@@ -26,9 +22,9 @@ import { WebService } from "./web.service";
 export class NuevaTareaComponent{
 
 
-    constructor(private webservice: WebService){}
+    constructor(private webservice: WebService, private auth: AuthService){}
 
-    tarea = {trabajo: '', usuario: ''};
+    tarea = {trabajo: '', usuario: this.auth.name};
 
     post(){
         this.webservice.postTask(this.tarea);

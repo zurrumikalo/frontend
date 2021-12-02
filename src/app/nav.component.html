@@ -1,16 +1,29 @@
-<mat-toolbar color="primary">
-    <span>Todo List</span>
+<mat-toolbar color="primary">Todo List
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-    <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-    <button mat-menu-item routerlink="/">
-        <mat-icon>home</mat-icon>
-        <span>Inicio</span>
-    </button>
-    <button mat-menu-item routerlink="/tareas">
-        <mat-icon>assignment_turned_in</mat-icon>
-        <span>Tareas</span>
-    </button>
-    </mat-menu>
-</mat-toolbar> 
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/">
+    <mat-icon>home</mat-icon>
+    <span>Inicio</span>
+  </button>
+  <button mat-menu-item routerLink="/tareas">
+    <mat-icon>assignment_turned_in</mat-icon>
+    <span>Tareas</span>
+  </button>
+  <button mat-menu-item routerLink="/login">
+    <mat-icon>assignment_ind</mat-icon>
+    <span>Identificarse</span>
+  </button>
+  <button mat-menu-item routerLink="/register">
+    <mat-icon>assignment_ind</mat-icon>
+    <span>Registro</span>
+  </button>
+  <button mat-menu-item routerLink="/" (click)="logout()">
+    <mat-icon>highlight_off</mat-icon>
+    <span>Salir</span>
+  </button>
+</mat-menu>
+<span style="flex: 1 1 auto"></span>
+<span *ngIf="ident" routerLink="/profile" style="cursor: pointer;" >Bienvenido {{name}}</span>
+  </mat-toolbar>

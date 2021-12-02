@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { AuthService } from "./auth.service";
 
 @Component({
     selector: 'nav',
@@ -7,6 +8,15 @@ import { Component } from "@angular/core";
 
 export class NavComponent{
 
-    constructor(){}
+    name: string;
+    ident: boolean;
+    constructor(private auth: AuthService){
+      this.name = auth.name;
+      this.ident = auth.identificado;
+  
+    }
+    logout(){
+      localStorage.clear();
+    }
    
 }
